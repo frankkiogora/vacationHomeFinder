@@ -14,6 +14,7 @@ from django.contrib.messages import constants as messages
 import os
 from secrets import SECRET_KEY
 import dj_database_url
+import django_heroku
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -137,7 +138,7 @@ USE_TZ = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'vacationHomeFinder/static')
+    os.path.join(BASE_DIR, 'static')
 ]
 
 # Media Folder Settings
@@ -149,6 +150,6 @@ MEDIA_URL = '/media/'
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
-
+django_heroku.settings(locals())
 
 # DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
