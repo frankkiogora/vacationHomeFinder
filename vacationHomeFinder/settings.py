@@ -14,7 +14,7 @@ from django.contrib.messages import constants as messages
 import os
 from secrets import SECRET_KEY
 import dj_database_url
-import django_heroku
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -26,9 +26,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
+
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://dashboard.heroku.com/apps/vacationhomefinder']
 
 
 # Application definition
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -95,11 +97,16 @@ WSGI_APPLICATION = 'vacationHomeFinder.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'vacationhomefinder',
+        'USER': 'frankkirimi',
+        'HOST': 'localhost',
     }
 }
 
+
+prod_db = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -135,10 +142,13 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
+
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
+
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, "static"),
 ]
 
 # Media Folder Settings
@@ -147,9 +157,9 @@ MEDIA_URL = '/media/'
 
 
 # Messages
-MESSAGE_TAGS = {
-    messages.ERROR: 'danger'
-}
-django_heroku.settings(locals())
+# MESSAGE_TAGS = {
+#     messages.ERROR: 'danger'
+# }
+# django_heroku.settings(locals())
 
 # DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)

@@ -1,0 +1,11 @@
+autopep8==1.4.4
+certifi==2018.8.24
+dj-database-url==0.5.0
+Django==2.2.2
+gunicorn==19.9.0
+Pillow==6.1.0
+psycopg2-binary==2.8.3
+pycodestyle==2.4.0
+pytz==2019.1
+sqlparse==0.3.0
+whitenoise==4.1.3
