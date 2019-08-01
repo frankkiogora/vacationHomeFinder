@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/2.1/ref/settings/
 
 from django.contrib.messages import constants as messages
 import os
-from secrets import SECRET_KEY
+from config import SECRET_KEY
 import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
@@ -27,7 +27,7 @@ SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['https://dashboard.heroku.com/apps/vacationhomefinder']
 
@@ -97,16 +97,24 @@ WSGI_APPLICATION = 'vacationHomeFinder.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'vacationhomefinder',
-        'USER': 'frankkirimi',
-        'HOST': 'localhost',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
     }
 }
 
 
-prod_db = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(prod_db)
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'vacationhomefinder',
+#         'USER': 'frankkirimi',
+#         'HOST': 'localhost',
+#     }
+# }
+
+
+# prod_db = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(prod_db)
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -142,13 +150,10 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-
-
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, 'vacationHomeFinder/static')
 ]
 
 # Media Folder Settings
@@ -157,9 +162,10 @@ MEDIA_URL = '/media/'
 
 
 # Messages
+# from django.contrib.messages import constants as messages
 # MESSAGE_TAGS = {
 #     messages.ERROR: 'danger'
 # }
-# django_heroku.settings(locals())
+
 
 # DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
