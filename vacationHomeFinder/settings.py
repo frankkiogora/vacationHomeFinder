@@ -29,9 +29,9 @@ SECRET_KEY = SECRET_KEY
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://dashboard.heroku.com/apps/vacationhomefinder']
+# ALLOWED_HOSTS = ['https://dashboard.heroku.com/apps/vacationhomefinder']
 
-
+ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
@@ -168,5 +168,5 @@ MEDIA_URL = '/media/'
 # }
 
 
-DATABASES['default'] = dj_database_url.config(
-    conn_max_age=600, ssl_require=True)
+prod_db = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
