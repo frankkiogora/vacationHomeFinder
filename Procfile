@@ -1,1 +1,1 @@
-web: gunicorn vacationHomeFinder.wsgi --log-file
+web: gunicorn vacationHomeFinder.wsgi 
