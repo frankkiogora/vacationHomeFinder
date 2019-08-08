@@ -68,7 +68,6 @@ county_choices = {
     'SI':  'Siaya',
     'TT':  'Taita Taveta',
     'TR':  'Tana River',
-    'NT':  'Orissa',
     'TN':  'Trans Nzoia',
     'UG':  'Uasin Gishu',
     'VI':  'Vihiga',
