@@ -3,3 +3,4 @@ database_schema.md
 django_cheat_sheet.md
 .vscode
 config.py
+.env

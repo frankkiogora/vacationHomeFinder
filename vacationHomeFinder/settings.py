@@ -1,3 +1,4 @@
+import environ
 import os
 import dj_database_url
 from django.contrib.messages import constants as messages
@@ -10,16 +11,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-
-SECRET_KEY = os.environ['SECRET_KEY']
-print(SECRET_KEY)
+env = environ.Env(
+    # set casting, default value
+    DEBUG=(bool, False)
+)
+# reading .env file
+environ.Env.read_env()
+SECRET_KEY = env('SECRET_KEY')
+print("my app secret key : ", SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = False
 # ALLOWED_HOSTS = ['https://dashboard.heroku.com/apps/vacationhomefinder']
 
-ALLOWED_HOSTS = ['https://vacationhomefinder.herokuapp.com']
+ALLOWED_HOSTS = ['herokuapp.com.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
@@ -100,11 +106,6 @@ DATABASES = {
 #     }
 # }
 
-
-# prod_db = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(prod_db)
-# Password validation
-# https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
