@@ -18,8 +18,8 @@ env = environ.Env(
 )
 # reading .env file
 environ.Env.read_env()
-VAC_HOME_SECRET_KEY = env('VAC_HOME_SECRET_KEY')
-print("my app secret key : ", VAC_HOME_SECRET_KEY)
+SECRET_KEY = env('SECRET_KEY')
+print("my app secret key : ", SECRET_KEY)
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
