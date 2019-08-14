@@ -1,5 +1,3 @@
-import environ
-import environ
 import os
 import dj_database_url
 from django.contrib.messages import constants as messages
@@ -12,15 +10,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
-# reading .env file
-environ.Env.read_env()
-SECRET_KEY = env('SECRET_KEY')
-print("my app secret key : ", SECRET_KEY)
 
+SECRET_KEY = os.environ['VAC_HOME_SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 
 DEBUG = False
