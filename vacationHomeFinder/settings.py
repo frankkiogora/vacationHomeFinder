@@ -17,8 +17,8 @@ SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = True
 # ALLOWED_HOSTS = ['https://dashboard.heroku.com/apps/vacationhomefinder']
 
-# ALLOWED_HOSTS = ['herokuapp.com.herokuapp.com']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['herokuapp.com.herokuapp.com']
+# ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
