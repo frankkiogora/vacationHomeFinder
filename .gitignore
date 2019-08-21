@@ -4,3 +4,4 @@ django_cheat_sheet.md
 .vscode
 config.py
 .env
+.pyc

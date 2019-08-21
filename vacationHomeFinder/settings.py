@@ -15,11 +15,14 @@ SECRET_KEY = os.environ['SECRET_KEY']
 # SECURITY WARNING: don't run with debug turned on in production!
 
 # ALLOWED_HOSTS = ['https://dashboard.heroku.com/apps/vacationhomefinder']
+
+# DEBUG = True
+# ALLOWED_HOSTS = []
+
 DEBUG = False
 
 ALLOWED_HOSTS = ['vacationhomefinder.herokuapp.com']
 
-# ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
@@ -133,13 +136,15 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static')
+
 STATIC_URL = '/static/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'vacationHomeFinder/static')
 ]
 
-# Media Folder Settings
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
