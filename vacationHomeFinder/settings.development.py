@@ -8,11 +8,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
-DEBUG = False
 
-ALLOWED_HOSTS = ['vacationhomefinder.herokuapp.com']
+DEBUG = True
+ALLOWED_HOSTS = []
 
-# Application definition
 
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',

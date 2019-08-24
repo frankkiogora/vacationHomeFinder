@@ -18,6 +18,7 @@ bedroom_choices = {
 # Price choices
 
 price_choices = {
+    '20000': '$20,000',
     '100000': '$100,000',
     '200000': '$200,000',
     '300000': '$300,000',
@@ -33,7 +34,7 @@ price_choices = {
 
 county_choices = {
     'BA': 'Baringo',
-
+    'SR': 'Santa Rosa',
     'BO': 'Bomet',
     'BS': 'Busia',
     'EM': 'Elgeyo Marakwet',
