@@ -64,34 +64,23 @@ WSGI_APPLICATION = 'vacationHomeFinder.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'real_estate' ,
-#         'USER': 'frankkirimi',
-#         'PASSWORD': '',
-#         'HOST':'localhost',
-
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'mydatabase',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'real_estatedb',
+        'USER': 'frankkirimi',
+        'PASSWORD': 'Gen18',
+        'HOST': 'localhost',
+
     }
 }
 
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'vacationhomefinder',
-#         'USER': 'frankkirimi',
-#         'HOST': 'localhost',
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': 'mydatabase',
 #     }
 # }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
