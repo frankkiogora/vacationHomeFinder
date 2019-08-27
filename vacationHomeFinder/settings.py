@@ -2,17 +2,21 @@ import os
 import dj_database_url
 from django.contrib.messages import constants as messages
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+#                                                            APP ACCESS
+# ============================================================================================================================================================
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
-DEBUG = False
+DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
 
 ALLOWED_HOSTS = ['vacationhomefinder.herokuapp.com']
 
-# Application definition
+#                                                            Application definition
+# ============================================================================================================================================================
 
 INSTALLED_APPS = [
     'pages.apps.PagesConfig',
@@ -27,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -41,6 +46,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'vacationHomeFinder.urls'
+
+#                                                            TEMPLATES
+# ============================================================================================================================================================
 
 TEMPLATES = [
     {
@@ -61,8 +69,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'vacationHomeFinder.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
+#                                                            DATABASE
+# ============================================================================================================================================================
 
 DATABASES = {
     'default': {
@@ -75,12 +83,16 @@ DATABASES = {
     }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': 'mydatabase',
-#     }
-# }
+# The lifetime of a database connection, in seconds.
+
+prod_db = dj_database_url.config(conn_max_age=0)
+
+DATABASES['default'].update(prod_db)
+
+DATABASE_ROUTERS = []
+
+#                                                            AUTH_PASSWORD_VALIDATORS
+# ============================================================================================================================================================
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -98,8 +110,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/2.1/topics/i18n/
+#                                                             INTERNATIONALIZATION
+# ============================================================================================================================================================
+
 
 LANGUAGE_CODE = 'en-us'
 
@@ -112,31 +125,57 @@ USE_L10N = True
 USE_TZ = True
 
 
+#                                                             STATIC
+# ============================================================================================================================================================
+
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.1/howto/static-files/
+
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 STATIC_URL = '/static/'
 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+MEDIA_URL = '/media/'
+
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'vacationHomeFinder/static')
 ]
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = 'smtp.gmail.com'
 
 
 # Messages
-# from django.contrib.messages import constants as messages
 # MESSAGE_TAGS = {
 #     messages.ERROR: 'danger'
 # }
 
-# The lifetime of a database connection, in seconds.
-prod_db = dj_database_url.config(conn_max_age=0)
-DATABASES['default'].update(prod_db)
 
 # The list of routers that will be used to determine which database to use when performing a database query.
 
-DATABASE_ROUTERS = []
+
+#                                               AMAZON WEB SERVICES VArs CONFIG
+# ============================================================================================================================================================
+
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+
+
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+
+
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+
+
+AWS_S3_FILE_OVERWRITE = false
+
+AWS_DEFAULT_ACL = None
