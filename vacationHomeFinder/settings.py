@@ -12,6 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['SECRET_KEY']
 
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
+print(DEBUG)
 
 ALLOWED_HOSTS = ['vacationhomefinder.herokuapp.com']
 
@@ -72,24 +73,22 @@ WSGI_APPLICATION = 'vacationHomeFinder.wsgi.application'
 #                                                            DATABASE
 # ============================================================================================================================================================
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'real_estatedb',
-        'USER': 'frankkirimi',
-        'PASSWORD': 'Gen18',
-        'HOST': 'localhost',
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'real_estatedb',
+#         'USER': 'frankkirimi',
+#         'PASSWORD': 'Gen18',
+#         'HOST': 'localhost',
 
-    }
-}
+#     }
+# }
 
 # The lifetime of a database connection, in seconds.
 
-prod_db = dj_database_url.config(conn_max_age=0)
 
-DATABASES['default'].update(prod_db)
-
-DATABASE_ROUTERS = []
+DATABASES = {}
+DATABASES['default'] = dj_database_url.config(conn_max_age=600)
 
 #                                                            AUTH_PASSWORD_VALIDATORS
 # ============================================================================================================================================================
@@ -175,7 +174,5 @@ AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
-
-AWS_S3_FILE_OVERWRITE = false
 
 AWS_DEFAULT_ACL = None
