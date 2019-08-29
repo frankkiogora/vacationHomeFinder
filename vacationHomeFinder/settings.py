@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['SECRET_KEY']
 
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-print(DEBUG)
+print('DEBUG STATUS : 'DEBUG)
 
 ALLOWED_HOSTS = ['vacationhomefinder.herokuapp.com']
 
@@ -73,16 +73,13 @@ WSGI_APPLICATION = 'vacationHomeFinder.wsgi.application'
 #                                                            DATABASE
 # ============================================================================================================================================================
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'real_estatedb',
-#         'USER': 'frankkirimi',
-#         'PASSWORD': 'Gen18',
-#         'HOST': 'localhost',
-
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'real_estatedb',
+        'HOST': 'localhost',
+    }
+}
 
 # The lifetime of a database connection, in seconds.
 
