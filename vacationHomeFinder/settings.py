@@ -12,7 +12,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['SECRET_KEY']
 
 DEBUG = (os.environ.get('DEBUG_VALUE') == 'True')
-print('DEBUG STATUS : 'DEBUG)
+print('DEBUG STATUS : ', DEBUG)
 
 ALLOWED_HOSTS = ['vacationhomefinder.herokuapp.com']
 
