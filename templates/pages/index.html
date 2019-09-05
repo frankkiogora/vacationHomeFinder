@@ -1,6 +1,8 @@
 {% extends 'base.html' %} {% load humanize %} {% block title %} | Welcome
 {%endblock %} {% block content %}
+
 <!-- Showcase -->
+
 <section id="showcase">
   <div class="container text-center">
     <div class="home-search p-5">
@@ -81,11 +83,15 @@
     </div>
   </div>
 </section>
+
 <br />
+
 <!-- Alerts -->
+
 {% include 'partials/_alerts.html' %}
 
 <!-- Listings -->
+
 <section id="listings" class="py-5">
   <div class="container">
     <h3 class="text-center mb-3">Latest Listings</h3>
@@ -141,7 +147,7 @@
             <hr />
             <a
               href="{% url 'listing' listing.id %}"
-              class="btn btn-primary btn-block"
+              class="btn btn-success btn-block"
               >More Info</a
             >
           </div>
