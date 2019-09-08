@@ -122,3 +122,6 @@ img {
     font-size: 40px;
   }
 }
+#map {
+  height: 500px;
+}
