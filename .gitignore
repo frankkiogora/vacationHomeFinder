@@ -5,6 +5,7 @@ django_cheat_sheet.md
 config.py
 .env
 .pyc
+README.md
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -127,4 +128,3 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
-notes.md
